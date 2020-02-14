@@ -67,6 +67,7 @@ const (
 	StateWeekdayAbbrevCommaOffset
 	StateWeekdayAbbrevCommaOffsetZone
 	StateHowLongAgo
+	StateTimestamp
 )
 
 const (
@@ -620,9 +621,9 @@ iterRunes:
 		}
 		if !t.IsZero() {
 			if loc == nil {
-				return t, StateDigit, nil
+				return t, StateTimestamp, nil
 			}
-			return t.In(loc), StateDigit, nil
+			return t.In(loc), StateTimestamp, nil
 		}
 
 	case StateDigitDash: // starts digit then dash 02-
