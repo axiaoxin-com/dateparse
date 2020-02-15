@@ -68,6 +68,7 @@ const (
 	StateWeekdayAbbrevCommaOffsetZone
 	StateHowLongAgo
 	StateTimestamp
+	StateNow
 )
 
 const (
@@ -130,6 +131,10 @@ func parse(layout, datestr string, loc *time.Location) (time.Time, error) {
 }
 
 func parseTime(datestr string, loc *time.Location) (time.Time, DateState, error) {
+	if strings.ToLower(datestr) == "now" {
+		return time.Now(), StateNow, nil
+	}
+
 	state := StateStart
 
 	firstSlash := 0
