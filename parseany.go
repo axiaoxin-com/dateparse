@@ -936,15 +936,15 @@ iterRunes:
 	case StateHowLongAgo:
 		// 1 minutes ago
 		// 1 hours ago
-		// 1 day ago
-		switch len(datestr) {
-		case len("1 minutes ago"), len("10 minutes ago"), len("100 minutes ago"):
+		// 1 days ago
+		switch {
+		case strings.Contains(datestr, "minutes ago"):
 			t, err := agoTime(datestr, time.Minute)
 			return t, StateHowLongAgo, err
-		case len("1 hours ago"), len("10 hours ago"):
+		case strings.Contains(datestr, "hours ago"):
 			t, err := agoTime(datestr, time.Hour)
 			return t, StateHowLongAgo, err
-		case len("1 day ago"), len("10 day ago"):
+		case strings.Contains(datestr, "days ago"):
 			t, err := agoTime(datestr, Day)
 			return t, StateHowLongAgo, err
 		}
