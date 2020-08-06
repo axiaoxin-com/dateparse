@@ -1,6 +1,22 @@
 Go Date Parser 
 ---------------------------
 
+Forked From: https://github.com/noaway/dateparse
+
+## 修改特性：
+
+- 修改时间格式类型 `dateState` 和该类型下的全变量为公有属性暴露出来给外部使用
+- 修改解析时间的方法的返回值，全部新增返回对应时间的格式类型值
+- `StateDigit` 新增区分是否为时间戳 `StateTimestamp` 的判断
+- 时间转换支持字符串 `now`
+- 修改时间格式：`x day ago` -> `x days ago`
+
+安装： `go get -u -v github.com/axiaoxin-com/dateparse`
+
+应用： <https://github.com/axiaoxin-com/dfc>
+
+-----------------------------
+
 Parse any date string without knowing format in advance.  Uses a scanner to read bytes and use a state machine to find format.  Much faster than shotgun based parse methods.  See [bench_test.go](https://github.com/noaway/dateparse/blob/master/bench_test.go) for performance comparison.
 
 

@@ -132,6 +132,9 @@ func parse(layout, datestr string, loc *time.Location) (time.Time, error) {
 
 func parseTime(datestr string, loc *time.Location) (time.Time, DateState, error) {
 	if strings.ToLower(datestr) == "now" {
+		if loc != nil {
+			return time.Now().In(loc), StateNow, nil
+		}
 		return time.Now(), StateNow, nil
 	}
 
